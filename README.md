@@ -4,7 +4,7 @@
 > 我目前大二就读于系统与网络专业，对网络安全领域很感兴趣，开这个仓库作为一个见证去记录我在网安领域的成长路径。目标是在23年参加一次CTF比赛。本仓库是Windows安全服务部分笔记，未来会继续开Linux安全运维、代码审计、情报搜集等学习模块的仓库。我们一起加油！！！
 
 ### 学习进度
-| 日期       | 标题                                                                            |
+| 日期       | 学习内容（进度）                                                                            |
 | ---------- | ------------------------------------------------------------------------------- |
 | Day1       | [学习VMware安装与基础配置（XP & Win 2003 server）](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/Day%201.md)                            |
 | Day2       | [学习磁盘划分与简单系统命令](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/Day%202.md)                            |
