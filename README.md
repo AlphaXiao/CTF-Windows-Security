@@ -7,6 +7,6 @@
 | 日期       | 标题                                                                            |
 | ---------- | ------------------------------------------------------------------------------- |
 | Day1       | [学习VMware安装与基础配置（XP & Win 2003 server）](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/Day%201.md)                            |
-| Day2       | [学习磁盘划分与简单系统命令和dos命令](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/Day%202.md)                            |
-| Day3       | [学习简单病毒与解药（自动删除文件病毒、关机病毒、占用磁盘病毒、暂时删除桌面恶搞病毒、无限弹窗病毒、蓝屏病毒、文件失效病毒）](https://github.com/AlphaXiao/CTF-Windows-Part/blob/main/weeks/Day%201.md)                            |
+| Day2       | [学习磁盘划分与简单系统命令](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/Day%202.md)                            |
+| Day3       | [学习和dos命令及简单病毒与解药（自动删除文件病毒、关机病毒、占用磁盘病毒、暂时删除桌面恶搞病毒、无限弹窗病毒、蓝屏病毒、文件失效病毒）](https://github.com/AlphaXiao/CTF-Windows-Part/blob/main/weeks/Day%201.md)                            |
 | Day4       | [学习用户与组、win8虚拟机下载配置](./weeks/week1.md)                            |
