@@ -1,4 +1,4 @@
-# 学习用户与组、win8虚拟机下载配置
+# 学习用户与组、win7虚拟机下载配置
 ## 用户与组
 windows 用户
 - 给人使用的账户：
@@ -73,16 +73,17 @@ pause
 ```
 
 ### 【修改密码病毒】
+把当前账户的密码改为123
 ```
 @echo off
-net user %username% 123  把当前账户的密码改为123
+net user %username% 123  
 ```
 管理员账户一般都支持远程登陆，如果这个漏洞修改的是管理员的密码就非常的危险
 
 5. 组是用来盛放用户的容器，用户处于不同的组当中就会拥有不同的权限
 - administrators        管理员组
 - guests                来宾组
-- users                 普通用户组
+- users                 普通用户组 （在家文件夹可以读写，其余地方没有添加删除权限）
 - network               网络配置组 
 - print                  打印机组 
 - Rmote desktop       远程桌面组
@@ -102,6 +103,8 @@ B、将用户从组中移除
  在组管理中找到一个组，右击组名称，选择“属性”，之后在列表中选中一个用户名，最后点击“删除”
 
 ![image](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%8774.png)
+
+> 一个用户可以在多个组内，所以每个组都可以赋予用户不同的权力，也就是这个组可以给你xx权力，而不是禁止用户做什么。
 
 6. 组管理命令
 - `net localgroup`   查看组列表
