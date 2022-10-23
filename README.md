@@ -13,7 +13,7 @@
 | Day5       | [密码破解 & dos命令进阶](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/Day%205.md)                            |
 | Day6       | [[计算机网络基础] 进制转换 & ip地址](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/Day%206.md)   |
 | Day7       | [[计算机网络基础] 子网划分与远程桌面服务](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/Day%207.md)   |
-| Day8       | [[计算机网络基础] NTFS与tlenet服务]()   |
+| Day8       | [[计算机网络基础] NTFS与tlenet服务](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/Day%208.md)   |
 | Day9       | [文件按共享服务与木马]()   |
 | Day10       | [[计算机网络基础] DHCP与域名]()   |
 | Day11       | [[计算机网络基础] DNS服务与web服务]()   |
