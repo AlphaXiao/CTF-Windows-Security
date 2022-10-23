@@ -320,8 +320,8 @@ Windows操作系统的安装文件为 `sources\install.wim`
 
 ![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87141.png) 
 
-待PE完成操作系统的前期安装后，重启电脑【并进入BIOS设置】，将CD-ROM Drive的顺序调整到Hard Drive 下方!
-[img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87142.png)
+待PE完成操作系统的前期安装后，重启电脑【并进入BIOS设置】，将CD-ROM Drive的顺序调整到Hard Drive 下方
+![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87142.png)
 
 ![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87143.png)
 
