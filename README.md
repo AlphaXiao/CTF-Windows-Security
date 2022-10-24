@@ -16,6 +16,6 @@
 | Day8       | [[计算机网络基础] NTFS与tlenet服务](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/Day%208.md)   |
 | Day9       | [文件按共享服务与木马](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/Day%209.md)   |
 | Day10       | [[计算机网络基础] DHCP与域名](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/Day%2010.md)   |
-| Day11       | [[计算机网络基础] DNS服务与web服务]()   |
+| Day11       | [[计算机网络基础] DNS服务与web服务](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/Day%2011.md)   |
 | Day12       | [[计算机网络基础] 动态网站与FTP]()   |
 | Day13       | [[渗透基础] 域渗透基础]()   |
