@@ -42,6 +42,10 @@
 
 为了方便管理，建议将文件共享权限设置为完全控制，之后仅依靠ntfs权限即可单方面决定用户的权限。
 
+ > 为什么不是把NTFS权限设置成完全控制？
+
+因为只有共享服务是要NTFS 和 共享文件夹同时授权才能操作。Telnet和远程桌面都只依赖于NTFS，如果把NTFS设置成完全控制会有很大安全隐患。
+
 ![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87203.png) 
  
 
