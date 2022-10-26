@@ -3,7 +3,11 @@
 
 通过远程桌面访问一台计算机时，除administrator之外，任何想要远程访问的账号都必须属于远程桌面组（remote desktop）
 
- 
+打开远程桌面连接的快捷键`mstsc`
+
+查看ip地址命令 `ipconfig`
+
+> 管理员如果不想让别人远程登陆超级管理员账号，可以新创建一个账号给远程登陆用。创建完普通用户账号记得放入远程桌面组才有远程权限。普通账号只有创建新文本的权限，没有跟改旧文本的权限。超级管理员可以右键需要跟改的旧文本→属性→安全→点击给远程登陆用的账号(如果没有就需要添加账号到组或用户名称)→赋予权限。
 
 ## 2. NTFS权限
 
@@ -11,14 +15,12 @@ NTFS格式的分区中，文件/目录 对不同 用户/组 所设置的权限
 
 ![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87174.png) 
 
-
 一般情况下，当对磁盘进行格式化时，磁盘的类型（文件系统）会有2种选项——FAT32或NTFS
 
 FAT32:不支持超过4个G的单个文件的读写，没有权限设置
 
 NTFS：没有对单个文件大小的限制，可配置NTFS权限
 
- 
 
 ## 3. NTFS权限的继承
 
@@ -26,11 +28,15 @@ NTFS：没有对单个文件大小的限制，可配置NTFS权限
 
 如果想要任意修改文件的NTFS权限，首先需要取消文件的权限继承
 
+取消勾选后会有两个button，一个是`复制`，另一个是`删除`。删除表示从父级继承来的权力全都不要了。复制表示以前继承来的东西还要，之后继承的东西不要了。
+
 ![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87175.png) 
 
-## 4. 通过修改NTFS权限可以使文件（文件夹）只能被创建者本人读取和操作（删除NTFS当中其它的用户和组，只保留创建者自己的账号）
+> 为什么要这样做？ 
 
- 
+比如公司要求HR组只能写入文件不能读取文件，因为HR组知道全公司所有人的收入情况。如果单独把某个文件对HR账号设置成只写模式，HR组还是可以读取其他文件，原因是HR账号属于`Users`，users继承了上一层的权限，上一层权限可能就包含了读取文件，可以右键查看属性看`Users`组的权限。所以要取消NTFS权限继承，然后再**把`users`组的给删除**，这样就能单独设置某个文件对于某个账号的权限了。
+
+## 4. 通过修改NTFS权限可以使文件（文件夹）只能被创建者本人读取和操作（删除NTFS当中其它的用户和组，只保留创建者自己的账号）
 
 但是，管理员账号可以强制更改文件的所有者（特别权限）
 
@@ -72,11 +78,11 @@ NTFS权限不仅可以设置给账户，也可以设置给组，当设置某个�
 
  
 
-注意：在windows2008中，同一个账号不允许同时登录（无论本地登录还是远程登录）
+- 注意：在windows2008中，同一个账号不允许同时登录（无论本地登录还是远程登录）
 
  
 
-RDP远程桌面服务
+- 专有名词RDP: RDP远程桌面服务
 
  
 
@@ -111,16 +117,16 @@ RDP远程桌面服务
 
 ![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87185.png) 
 
-telenet服务的端口号为23，可通过netstat -an进行查看
+- 查看telnet服务是否开启： telenet服务的端口号为`23`，可通过`netstat -an`进行查看
 
 ![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87186.png) 
 
-确认端口已开启之后，就可以在另一台电脑上尝试访问服务器的telnet。方法：在cmd命令界面中输入telnet ip
+确认端口已开启之后，就可以在另一台电脑上尝试访问服务器的telnet。方法：在cmd命令界面中输入`telnet ip`
 
 ![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87187.png) 
  
 
-在客户端使用telnet连接服务器时，telnet会首先会尝试将当前客户端电脑的账号密码当作telnet连接的账密进行连接，此时通常选择不用本地账号尝试（N）
+在客户端使用telnet连接服务器时，telnet会首先会尝试将当前客户端电脑的账号密码当作telnet连接的账密进行连接，如果远程连接的电脑是hacker的，那么自己电脑的账号密码就暴露了，所以此时通常选择不用本地账号尝试（N）
 
 ![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87188.png) 
 
