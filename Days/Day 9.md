@@ -130,10 +130,21 @@ at `\\192.168.1.1 15:09 d:\123.bat`  让服务器自动在15:09执行`123.bat`
 
 使用工具时首先配置服务程序，在弹出的界面中填写攻击者的IP地址
 
-![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87210.png) 
-
+![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87213.png) 
 
 使用工具时将生成的服务程序通过文件共享服务传给服务器端，再通过at命令定时启动
+
+![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87214.png) 
+
+当服务器端在定时计划执行之后，攻击方的工具界面中会提示有设备自动上线
+
+![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87215.png) 
+
+当成功控制目标设备之后，攻击者不仅可以任意上传或下载文件，同时在遇到可执行程序时，能够选择由本地打开还是远程打开
+
+![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87216.png) 
+
+此外，通过该工具，攻击者还可以捕获被攻击方的桌面
 
 >开启远程共享服务的情况下
 
@@ -143,7 +154,16 @@ at `\\192.168.1.1 15:09 d:\123.bat`  让服务器自动在15:09执行`123.bat`
 
 再在攻击方cmd设置开启时间 `net time \\192.168.1.1` 然后 `at \\192.168.1.1 触发时间 c:\123.exe`
 
-![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87211.png) 
+![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87217.png) 
+
+当捕获屏幕后，还可以通过“发送鼠标和键盘”来远程代替被攻击方进行键盘、鼠标的操作
+
+![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87218.png) 
+
+注意，被攻击的设备如果不进行muma的处理，则每次上线后都会被攻击者发现，并被控制。如果攻击者想要放弃对某台设备的监控，操作如下图
+
+![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87219.png) 
+
  
 
 ## 9. 默认共享的取消
