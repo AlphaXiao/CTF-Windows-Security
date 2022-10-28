@@ -1,9 +1,9 @@
 # DNS服务与web服务
 ## 1. windows2003上的DNS服务器配置  
 
-1）要求服务器的IP是手动配置的静态IP地址 (btw:如果是动态的ip地址，经常变，那别人就很难搜索到)
+1）要求服务器的IP是手动配置的静态IP地址
 
-2）打开windows2003的系统盘（在我的电脑里有可移动存储的设备），选择“安装可选windows组件”
+2）打开windows2003的系统盘，选择“安装可选windows组件”
 
 ![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87239.png) 
 
@@ -83,6 +83,10 @@
 
 3） 转发器设置完毕之后，如果当前DNS服务器遇到无法解析的域名，则转交给转发器中的设备进行处理
 
+查看是哪个服务器上的DNS为你解析的当前地址 `ns lookup`
+
+查看某个域名是谁解析的 `ns lookup 域名`
+
 ## 3. DNS反向解析
 
 通过IP地址解析出设备的域名（名字）
@@ -99,13 +103,15 @@
 
 之后一路下一步直到区域创建完成
 
-3）在所创建的反向区域中新建PTR（指针）
+3）在所创建的反向区域中新建**PTR（指针）**
 
 ![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87256.png) 
 
 4）在窗口中填写IP 地址的最后一段以及对应的名称
 
 ![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87257.png) 
+
+通过`ns lookup 域名`命令可以看到解析该域名的服务器的名字
 
 ## 4. 别名解析
 
@@ -136,9 +142,11 @@
 
  
 
-客户机访问域名的顺序
+### 客户机访问域名的顺序
 
-DNS缓存----本机hosts文件---本地DNS服务器
+> 当DNS解析过一个域名就会把解析出来的ip地址和对应的域名放到DNS缓存中，当用户第二次访问同样的域名，服务器会直接从DNS缓存中找到对应ip，这也就是为什么第一次访问某个网站速度慢，第二次登录就会快很多的原因。如果原域名对应的ip地址发生变动，有可能用户就访问不到，因为服务器会直接去DNS缓存中找历史记录而不是去找对应的DNS服务器解析，这就有可能出现DNS缓存中的ip地址与变动后的ip地址不同，访问不到。可以通过清除客户机DNS缓存解决。
+
+**DNS缓存----本机hosts文件---本地DNS服务器**
 
 hosts文件的位置
 
@@ -149,21 +157,23 @@ hosts文件的位置
 
 ![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87262.png) 
 
-禁止访问www.baidu.com和www.hao123.com
+禁止访问 `www.baidu.com` 和 `www.hao123.com`
 
  
 
-客户机清除DNS缓存
+### 客户机清除DNS缓存
 
-ipconfig  /flushdns
-
- 
-
-DNS服务器解析域名的顺序
-
-DNS高速缓存--本地DNS解析记录--DNS转发器--根提示
+`ipconfig  /flushdns`
 
  
+
+### DNS服务器解析域名的顺序
+
+**DNS高速缓存--本地DNS解析记录--DNS转发器--根提示**
+
+> 从别的DNS服务器解析（DNS转发器）来的域名会保存到高速缓存中
+
+> 如果原域名ip地址发生变动，清除了客户机DNS缓存还是访问不到，有可能是因为DNS服务器高速缓存中仍有原解析信息备份，可以再次清除高速缓存解决问题
 
 DNS服务器高速缓存的位置：
 
@@ -171,19 +181,16 @@ DNS服务器高速缓存的位置：
 
 清除缓存
 
-![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87264.png) 
+![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87264.png)  
 
- 
+### Windows安全运维
+安全运维工作者要经常清理DNS高速缓存，也要让客户机清理本地DNS缓存，避免拿到过时ip地址无法访问某些域名。
 
 ## 5. WEB服务
 
 提供网页的浏览服务，使客户机能够通过浏览器访问网站中的页面。web服务器可以将网站发布出去，让网民进行访问。
 
- 
-
 HTTP协议端口号：`80`
-
- 
 
 ## 6. 可提供web服务的工具
 
