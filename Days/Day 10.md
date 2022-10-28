@@ -1,36 +1,5 @@
 # DHCP与域名
-## 1. 那个啥的使用方法
-
-使用工具时首先配置服务程序，在弹出的界面中填写攻击者的IP地址
-
-![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87213.png) 
-
-使用工具时将生成的服务程序通过文件共享服务传给服务器端，再通过at命令定时启动
-
-![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87214.png) 
-
-当服务器端在定时计划执行之后，攻击方的工具界面中会提示有设备自动上线
-
-![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87215.png) 
-
-当成功控制目标设备之后，攻击者不仅可以任意上传或下载文件，同时在遇到可执行程序时，能够选择由本地打开还是远程打开
-
-![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87216.png) 
-
-此外，通过该工具，攻击者还可以捕获被攻击方的桌面
-
-![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87217.png) 
-
-当捕获屏幕后，还可以通过“发送鼠标和键盘”来远程代替被攻击方进行键盘、鼠标的操作
-
-![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87218.png) 
-
-注意，被攻击的设备如果不进行muma的处理，则每次上线后都会被攻击者发现，并被控制。如果攻击者想要放弃对某台设备的监控，操作如下图
-
-![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87219.png) 
-
-
-## 2. DHCP服务（Dynamic Host Configuration Protocol）
+## 1. DHCP服务（Dynamic Host Configuration Protocol）
 
 自动为客户机分配IP地址的服务
 
@@ -50,17 +19,15 @@ IP地址、子网掩码、网关、DNS
 
  
 
-DHCP服务的端口号
-
-UDP 67/68
+DHCP服务的端口号: UDP `67/68`
 
  
 
-## 3. DHCP服务的工作原理
+## 2. DHCP服务的工作原理
 
 1）客户机发送DHCP Discovery 广播
 
- 客户机通过该广播请求IP地址（发送的请求中包含客户机自己的网卡地址）
+ 客户机通过该广播请求IP地址（发送的请求中包含客户机自己的**网卡地址**）
 
 2）DHCP服务器接收到Discovery广播之后，会进行响应，发送DHCP Offer广播
 
@@ -84,7 +51,7 @@ ACK广播中包含IP地址，SM，网关地址，DNS地址，租期
 
  
 
-4. windows2003搭建DHCP服务器
+## 3. windows2003搭建DHCP服务器
 
 1）确保作为服务器的电脑，IP地址是手动配置的固定IP地址
 
@@ -97,8 +64,6 @@ ACK广播中包含IP地址，SM，网关地址，DNS地址，租期
 4）之后在界面中找到“网络服务”选项，并双击
 
 ![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87221.png) 
-
- 
 
 5）双击“网络服务”之后，在新的窗口中，勾选DHCP选项
 
@@ -126,13 +91,14 @@ ACK广播中包含IP地址，SM，网关地址，DNS地址，租期
 
  
 
-11）作用域创建完毕后，需要即可方可生效
+11）作用域创建完毕后，需要即可生效
 
 ![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87227.png) 
 
- 
+ ## DHCP攻击
+> 在同一局域网内，如果某台主机开启DHCP服务，DHCP分配的ip与局域网内其他ip地址不同网段，这就有可能导致周遭很大一片区域的主机无法联网。比如现在我们做实验，在xp上开启了DHCP服务，可是VMware虚拟机也提供DHCP服务，优先级肯定是先VMware软件再到具体某台主机。这个时候VMware分配的ip可能就和实验主机DHCP协议分配的IP处于不同网段。我们需要关闭VMware DHCP协议，由主机内自己开启的DHCP分配ip，这样大家都在同一网段。
 
-关闭vmware自带的DHCP服务
+## 关闭vmware自带的DHCP服务
 
 在 vmware工具的菜单中，点击“编辑——虚拟网络编辑器”
 
@@ -142,22 +108,18 @@ ACK广播中包含IP地址，SM，网关地址，DNS地址，租期
 
 ![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87229.png) 
 
-由于DHCP所提供的IP地址有一定的租期，因此关闭上图的DHCP服务后，已经获取IP的计算机仍然会使用原有IP。此时，可使用
-
-ipconfig  /release 释放当前的IP配置
-
-之后再用
-
-`iPconfig  /renew`  重新向dhcp服务器索取IP地址
+由于DHCP所提供的IP地址有一定的租期，因此关闭上图的DHCP服务后，已经获取IP的计算机仍然会使用原有IP。此时，可使用`ipconfig  /release` 释放当前的IP配置,之后再用`iPconfig  /renew`  重新向dhcp服务器索取IP地址
 
  
-## 5. DHCP中的保留地址
+## 4. DHCP中的保留地址
 
 对于有特殊用户的IP，要求该IP必须只应用在唯一的指定电脑上，并且客户端还需要通过自动获取来得到该IP
 
-  那么，就可以使用DHCP中的保留功能，将某个可分配的IP地址与计算机的MAC地址对应，在日后的IP分为中，被保留的IP地址只能配给对应的MAC网卡
+那么，就可以使用DHCP中的保留功能，将某个可分配的IP地址与计算机的MAC地址对应，在日后的IP分为中，被保留的IP地址只能配给对应的MAC网卡
 
 操作方法：
+
+查看物理网卡地址（MAC地址）：cmd中输入`ipconfig /all`，查找physical address
 
  在DHCP管理工具中，右击“保留”，选择“新建保留”
 
@@ -167,12 +129,12 @@ ipconfig  /release 释放当前的IP配置
 
 ![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87231.png) 
 
-DHCP占用攻击
+## DHCP占用攻击
 
 命令： 在kali的命令行中  `pig.py eth0`
 
  
-## 6. Windows2008 配置DHCP服务
+## 5. Windows2008 配置DHCP服务
 
 1）将服务器的IP地址手动配置为固定IP
 
@@ -210,7 +172,7 @@ DHCP占用攻击
 ![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87238.png) 
  
 
-## 7. 域名
+## 6. 域名
 
  就是IP地址的别名
 
@@ -218,7 +180,7 @@ DHCP占用攻击
 
  
 
-域名的命令规则
+### 域名的命令规则
 
 数字
 
@@ -230,7 +192,7 @@ DHCP占用攻击
 
  
 
-域名的组成
+### 域名的组成
 
   `www.`   `baidu.`    `Com`    ` .`
 
@@ -256,7 +218,7 @@ DHCP占用攻击
 
  
 
-## 8. DNS服务
+## 7. DNS服务
 
 域名解析服务——把域名解释为IP地址，并访问IP对应的服务器内容
 
