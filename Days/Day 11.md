@@ -194,13 +194,13 @@ HTTP协议端口号：`80`
 
 ## 6. 可提供web服务的工具
 
-微软：`IIS`
+- 微软：`IIS`
 
-Linux：`Apache`
+- Linux：`Apache`
 
-`Tomcat/nginx`
+- `Tomcat/nginx`
 
-第三方工具：`phpstudy/XAMPP...`
+- 第三方工具：`phpstudy/XAMPP...`
 
 ## 7. 开启IIS服务器
 
