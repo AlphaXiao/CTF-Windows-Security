@@ -1,9 +1,9 @@
 # DNS服务与web服务
 ## 1. windows2003上的DNS服务器配置  
 
-1）要求服务器的IP是手动配置的静态IP地址
+1）要求服务器的IP是手动配置的静态IP地址 (btw:如果是动态的ip地址，经常变，那别人就很难搜索到)
 
-2）打开windows2003的系统盘，选择“安装可选windows组件”
+2）打开windows2003的系统盘（在我的电脑里有可移动存储的设备），选择“安装可选windows组件”
 
 ![img](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%87239.png) 
 
