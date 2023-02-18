@@ -54,7 +54,7 @@ calc	计算器
 10. `Shutdown` 关 机
 - `shutdown   /s`	关机	（默认 30 秒之后关机）
 - `shutdown    /s  /t   600`	(600 秒之后关机) （600 秒是最大限度（10mins） shutdown   `/a`	取消关机
-- `shutdown /a /t 0` 立刻关机
+- `shutdown /s /t 0` 立刻关机
 - `shutdown    /s  /f   /t	1` （1 秒后【强制】关机）` Shutdown   /L`	注销
 - 注意：在 shutdown 命令中（**只有在 shutdown 命令中**） /s /t /f 等参数也可以写作 -s -t -f
 
