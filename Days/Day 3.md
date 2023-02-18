@@ -89,8 +89,9 @@ echo =================================
 
 ![image](https://github.com/AlphaXiao/CTF-Windows-Security/blob/main/Days/pictures/%E5%9B%BE%E7%89%8763.png)
 
-## 简单的病毒:把 e 盘下面的东西删除光@echo off
+## 简单的病毒:把 e 盘下面的东西删除光
 ```
+@echo off
 color 0A
 echo =================================
 echo	欢迎使用 XXX 在线安装程序 v.10
